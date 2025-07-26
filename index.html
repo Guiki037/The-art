@@ -50,7 +50,7 @@
             justify-content: flex-start; /* Alinha o conteúdo interno ao topo */
             align-items: center; /* Centraliza horizontalmente os itens dentro do content-wrapper */
             gap: 2rem; /* Espaçamento entre os elementos */
-            padding: 2rem 1rem; /* Adiciona padding no topo para afastar o botão da borda */
+            padding: 3rem 1rem; /* Aumentado o padding no topo para descer o botão */
             text-align: center;
             width: 100%; /* Ocupa a largura total para centralizar o conteúdo */
             max-width: 1000px; /* Limita a largura máxima do wrapper para desktops */
@@ -80,12 +80,14 @@
         @media (max-width: 768px) {
             .message-box {
                 padding: 1.5rem; /* Reduz o padding da caixa de mensagem */
+                width: 95%; /* Garante que a caixa de mensagem ocupe mais espaço em telas menores */
+                max-width: 400px; /* Reduz a largura máxima para telas menores */
             }
             .music-iframe {
                 height: 200px; /* Ajusta a altura do iframe para telas menores */
             }
             .content-wrapper {
-                padding: 1rem; /* Reduz o padding geral em telas menores */
+                padding: 2rem 1rem; /* Ajusta o padding geral em telas menores, mantendo o botão um pouco mais baixo */
             }
         }
 
