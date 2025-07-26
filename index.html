@@ -7,96 +7,102 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* Define o modelo de caixa para todos os elementos, garantindo que padding e border sejam incluídos na largura/altura total */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #00577e; 
+            background-color: #00577e; /* Cor de fundo especificada */
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            overflow: hidden; 
+            overflow: hidden; /* Evita barras de rolagem indesejadas */
             display: flex;
-            justify-content: center; 
-            align-items: flex-start; 
-            min-height: 100vh; 
+            justify-content: center; /* Centraliza horizontalmente o content-wrapper */
+            align-items: flex-start; /* Alinha o content-wrapper ao topo da viewport */
+            min-height: 100vh; /* Garante que o corpo ocupe a altura total da viewport */
         }
 
         .background-container {
-            position: fixed; 
+            position: fixed; /* Fixa o contêiner de fundo */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: -1; 
+            z-index: -1; /* Coloca o fundo atrás de outros elementos */
         }
 
         .background-image {
             width: 100%;
             height: 100%;
-            object-fit: cover; 
-            object-position: center; 
-            filter: brightness(0.7); 
+            object-fit: cover; /* Garante que a imagem cubra todo o contêiner */
+            object-position: center; /* Centraliza a imagem */
+            filter: brightness(0.7); /* Escurece um pouco a imagem para melhor contraste */
         }
 
         .content-wrapper {
             position: relative;
-            z-index: 1; 
+            z-index: 1; /* Garante que o conteúdo fique acima da imagem de fundo */
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; 
-            align-items: center; 
-            gap: 2rem; 
-            padding: 2rem 1rem; 
+            justify-content: flex-start; /* Alinha o conteúdo interno ao topo */
+            align-items: center; /* Centraliza horizontalmente os itens dentro do content-wrapper */
+            gap: 2rem; /* Espaçamento entre os elementos */
+            padding: 2rem 1rem; /* Adiciona padding no topo para afastar o botão da borda */
             text-align: center;
-            width: 100%; 
-            max-width: 1000px; /
+            width: 100%; /* Ocupa a largura total para centralizar o conteúdo */
+            max-width: 1000px; /* Limita a largura máxima do wrapper para desktops */
         }
 
         .message-box {
-            background-color: #00577e; 
-            backdrop-filter: blur(10px); 
+            background-color: #00577e; /* Fundo semi-transparente */
+            backdrop-filter: blur(10px); /* Efeito de desfoque */
             border-radius: 1rem;
             padding: 2rem;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
-            max-width: 90%;
-            width: 500px; 
+            max-width: 90%; /* Garante que a caixa de mensagem não seja muito larga em telas pequenas */
+            width: 500px; /* Largura padrão para o conteúdo em telas maiores */
         }
 
         .music-iframe {
-            border-radius: 0.75rem; 
-            width: 100%;
-            max-width: 560px; 
-            height: 315px; 
+            border-radius: 0.75rem; /* Bordas arredondadas para o iframe */
+            width: 100%; /* Ocupa a largura total do contêiner pai */
+            max-width: 560px; /* Largura máxima para o iframe de música */
+            height: 315px; /* Altura padrão para vídeos do YouTube */
             border: none;
         }
 
+        /* Media query para telas menores (smartphones e tablets) */
         @media (max-width: 768px) {
             .message-box {
-                padding: 1.5rem;
+                padding: 1.5rem; /* Reduz o padding da caixa de mensagem */
             }
             .music-iframe {
-                height: 200px; 
+                height: 200px; /* Ajusta a altura do iframe para telas menores */
             }
             .content-wrapper {
-                padding: 1rem; 
+                padding: 1rem; /* Reduz o padding geral em telas menores */
             }
         }
 
-        
+        /* Estilos para o botão e o conteúdo oculto */
         .reveal-button {
             background-color: rgba(255, 255, 255, 0.2);
             color: white;
             padding: 0.75rem 1.5rem;
-            border-radius: 9999px; 
+            border-radius: 9999px; /* Botão arredondado */
             border: 1px solid rgba(255, 255, 255, 0.5);
-            font-size: 1.125rem; 
-            font-weight: 700; 
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 700; /* font-bold */
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
             backdrop-filter: blur(5px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            margin-bottom: 2rem; 
+            margin-bottom: 2rem; /* Espaço abaixo do botão para o conteúdo que aparece */
         }
 
         .reveal-button:hover {
@@ -105,8 +111,8 @@
         }
 
         .hidden-content {
-            display: none; 
-            flex-direction: column; 
+            display: none; /* Conteúdo inicialmente oculto */
+            flex-direction: column; /* Para manter o layout interno */
             align-items: center;
             gap: 2rem;
             width: 100%;
@@ -129,28 +135,29 @@
 </head>
 <body>
     <div class="background-container">
-        
+        <!-- A imagem 'olhos2.jpg' deve estar na mesma pasta do arquivo HTML -->
         <img src="olhos2.jpg" alt="Foto do seu olhar" class="background-image" onerror="this.onerror=null;this.src='olhos2.jpg';">
     </div>
 
     <div class="content-wrapper">
-
+        <!-- Botão para revelar o conteúdo -->
         <button id="revealButton" class="reveal-button">She is the art 🎨</button>
 
+        <!-- Conteúdo que será ocultado/exibido -->
         <div id="hiddenContent" class="hidden-content">
             <div class="message-box">
                 <h1 class="text-4xl font-bold mb-4">- Seu olhar -</h1>
                 <p class="text-lg">
-                Num dia <mark>qualquer,</mark> o sol nasceu sem pressa...
-mas quando <mark>você apareceu,</mark> até ele corou de <mark>ciúmes.</mark>
-Seu olhar acendeu em mim algo que o céu <mark>jamais</mark> conseguiu:
-onde faz até o <mark>tempo</mark> querer parar pra assistir.</p>
+                    Num dia <mark>qualquer,</mark> o sol nasceu sem pressa...
+                    mas quando <mark>você apareceu,</mark> até ele corou de <mark>ciúmes.</mark>
+                    Seu olhar acendeu em mim algo que o céu <mark>jamais</mark> conseguiu:
+                    onde faz até o <mark>tempo</mark> querer parar pra assistir.
                 </p>
             </div>
 
             <div class="music-player">
-            
-<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/07HuqQOwrVRDQSuDIryO45?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <!-- Iframe para a música do Spotify -->
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/07HuqQOwrVRDQSuDIryO45?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 <p class="text-white text-sm mt-2">Para nunca se esquecer o quanto você é especial!</p>
             </div>
         </div>
@@ -159,14 +166,14 @@ onde faz até o <mark>tempo</mark> querer parar pra assistir.</p>
     <script>
         document.getElementById('revealButton').addEventListener('click', function() {
             const hiddenContent = document.getElementById('hiddenContent');
-            
+            // Toggle a visibilidade do conteúdo
             if (hiddenContent.style.display === 'none' || hiddenContent.style.display === '') {
-                hiddenContent.style.display = 'flex'; 
-                hiddenContent.classList.add('fade-in'); 
-                this.style.display = 'none'; 
+                hiddenContent.style.display = 'flex'; // Exibe o conteúdo
+                hiddenContent.classList.add('fade-in'); // Adiciona a animação de fade-in
+                this.style.display = 'none'; // Oculta o botão após o clique
             } else {
-                hiddenContent.style.display = 'none'; 
-                this.style.display = 'block'; 
+                hiddenContent.style.display = 'none'; // Oculta o conteúdo
+                this.style.display = 'block'; // Exibe o botão novamente
             }
         });
     </script>
