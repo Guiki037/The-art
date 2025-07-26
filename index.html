@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>She is the art 🎨</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #00577e; 
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+            display: flex;
+            justify-content: center; 
+            align-items: flex-start; 
+            min-height: 100vh; 
+        }
+
+        .background-container {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1; 
+        }
+
+        .background-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            object-position: center; 
+            filter: brightness(0.7); 
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1; 
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; 
+            align-items: center; 
+            gap: 2rem; 
+            padding: 2rem 1rem; 
+            text-align: center;
+            width: 100%; 
+            max-width: 1000px; /
+        }
+
+        .message-box {
+            background-color: #00577e; 
+            backdrop-filter: blur(10px); 
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            max-width: 90%;
+            width: 500px; 
+        }
+
+        .music-iframe {
+            border-radius: 0.75rem; 
+            width: 100%;
+            max-width: 560px; 
+            height: 315px; 
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .message-box {
+                padding: 1.5rem;
+            }
+            .music-iframe {
+                height: 200px; 
+            }
+            .content-wrapper {
+                padding: 1rem; 
+            }
+        }
+
+        
+        .reveal-button {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px; 
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            font-size: 1.125rem; 
+            font-weight: 700; 
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem; 
+        }
+
+        .reveal-button:hover {
+            background-color: rgba(255, 255, 255, 0.356);
+            transform: translateY(-2px);
+        }
+
+        .hidden-content {
+            display: none; 
+            flex-direction: column; 
+            align-items: center;
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        mark{
+            background-color: #2279a1;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container">
+        
+        <img src="olhos2.jpg" alt="Foto do seu olhar" class="background-image" onerror="this.onerror=null;this.src='olhos2.jpg';">
+    </div>
+
+    <div class="content-wrapper">
+
+        <button id="revealButton" class="reveal-button">She is the art 🎨</button>
+
+        <div id="hiddenContent" class="hidden-content">
+            <div class="message-box">
+                <h1 class="text-4xl font-bold mb-4">- Seu olhar -</h1>
+                <p class="text-lg">
+                Num dia <mark>qualquer,</mark> o sol nasceu sem pressa...
+mas quando <mark>você apareceu,</mark> até ele corou de <mark>ciúmes.</mark>
+Seu olhar acendeu em mim algo que o céu <mark>jamais</mark> conseguiu:
+onde faz até o <mark>tempo</mark> querer parar pra assistir.</p>
+                </p>
+            </div>
+
+            <div class="music-player">
+            
+<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/07HuqQOwrVRDQSuDIryO45?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <p class="text-white text-sm mt-2">Para nunca se esquecer o quanto você é especial!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('revealButton').addEventListener('click', function() {
+            const hiddenContent = document.getElementById('hiddenContent');
+            
+            if (hiddenContent.style.display === 'none' || hiddenContent.style.display === '') {
+                hiddenContent.style.display = 'flex'; 
+                hiddenContent.classList.add('fade-in'); 
+                this.style.display = 'none'; 
+            } else {
+                hiddenContent.style.display = 'none'; 
+                this.style.display = 'block'; 
+            }
+        });
+    </script>
+</body>
+</html>
